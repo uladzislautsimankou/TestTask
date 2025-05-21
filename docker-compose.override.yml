@@ -1,0 +1,37 @@
+services:
+    testtask.api:
+        environment:
+          - ASPNETCORE_ENVIRONMENT=Development
+          - ASPNETCORE_HTTP_PORTS=8080
+        ports:
+          - "8080:8080"
+        volumes:
+          - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+          - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+          - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+          - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+        depends_on:
+          - sqlserver
+        networks:
+          - backend
+
+    sqlserver:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        container_name: sqlserver
+        environment:
+          - SA_PASSWORD=${SA_PASSWORD}
+          - ACCEPT_EULA=Y
+        ports:
+          - "1433:1433"
+        volumes:
+          - sql_data:/var/opt/mssql
+        networks:
+          - backend
+        healthcheck:
+          test: ["CMD-SHELL", "exit 0"]
+
+volumes:
+  sql_data:
+
+networks:
+  backend:
