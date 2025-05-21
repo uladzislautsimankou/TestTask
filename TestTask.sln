@@ -13,7 +13,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Postman", "Postman", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
-		TestTask.postman_collection.json = TestTask.postman_collection.json
+		Postman\TestTask.postman_collection.json = Postman\TestTask.postman_collection.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask.ConsoleApp", "TestTask.ConsoleApp\TestTask.ConsoleApp.csproj", "{4F56F33B-27FB-0E5C-4C8B-599EAA1EE48E}"
